@@ -9,15 +9,19 @@ case $(uname -m) in
 esac
 sudo passwd $USER
 
-sudo cat > /home/$USER/.bash_profile << "EOF"
+cat > tmp.txt << "EOF"
 exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
 EOF
-sudo cat > /home/$USER/.bashrc << EOF
+cat tmp.txt | sudo tee -a /home/$USER/.bash_profile
+
+cat > tmp.txt << EOF
 set +h
 umask 022
 LFS=${LFS}
 EOF
-sudo cat >> /home/$USER/.bashrc << "EOF"
+cat tmp.txt | sudo tee -a /home/$USER/.bashrc
+
+cat >> tmp.txt << "EOF"
 LC_ALL=POSIX
 LFS_TGT=$(uname -m)-lfs-linux-gnu
 PATH=/usr/bin
@@ -27,3 +31,4 @@ CONFIG_SITE=$LFS/usr/share/config.site
 export LFS LC_ALL LFS_TGT PATH CONFIG_SITE
 export MAKEFLAGS=-j$(nproc)
 EOF
+cat tmp.txt | sudo tee -a /home/$USER/.bashrc
