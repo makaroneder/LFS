@@ -1,7 +1,7 @@
 #!/bin/bash
 source Config.sh
 
-fdisk $DISK <<EOF
+sudo fdisk $DISK <<EOF
 g
 n
 1
@@ -15,8 +15,8 @@ n
 
 w
 EOF
-mkfs.vfat -v -F 32 $BOOTPARTITION
-mkfs -v -t ext4 $ROOTPARTITION
+sudo mkfs.vfat -v -F 32 $BOOTPARTITION
+sudo mkfs -v -t ext4 $ROOTPARTITION
 
 source Mount.sh
 
