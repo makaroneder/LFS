@@ -1,4 +1,7 @@
 #!/bin/bash
+set -e
+
+export ROOTUSER=x
 
 export DISK=/dev/sda
 export BOOTPARTITION=${DISK}1

@@ -26,4 +26,4 @@ wget https://www.linuxfromscratch.org/lfs/view/stable/md5sums
 pushd $LFS/sources
     md5sum -c md5sums
 popd
-chown root:root $LFS/sources/*
+chown $ROOTUSER:$ROOTUSER $LFS/sources/*
