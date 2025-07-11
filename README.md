@@ -1,2 +1,1 @@
-# LFS
-Linux From Scratch
+# Linux From Scratch
