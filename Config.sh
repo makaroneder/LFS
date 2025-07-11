@@ -2,7 +2,7 @@
 set -e
 
 export ROOTUSER=x
-export USER=lfs
+export HOSTUSER=lfs
 
 export DISK=/dev/sda
 export BOOTPARTITION=${DISK}1
